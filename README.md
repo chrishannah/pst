@@ -10,7 +10,7 @@ then that is a bonus.
 
 - [x] publish drafts to Micro.blog
 - [x] configure app token in config.json
+- [x] better output when publishing post
 - [ ] usage instructions
 - [ ] control post status via argument
 - [ ] maybe support input from stdin
-- [ ] better output when publishing post

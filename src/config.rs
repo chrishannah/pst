@@ -5,7 +5,7 @@ pub mod load {
 
     use serde::Deserialize;
 
-    #[derive(Deserialize, Debug)]
+    #[derive(Deserialize)]
     pub struct Config {
         pub token: String,
     }
