@@ -1,0 +1,18 @@
+[package]
+name = "pst"
+version = "0.1.0"
+authors = ["Chris Hannah <me@chrishannah.me>"]
+license = "MIT"
+description = "A tool to publish posts to Micro.blog"
+homepage = "https://github.com/chrishannah/pst"
+repository = "https://github.com/chrishannah/pst"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+reqwest = { version = "0.12.2" }
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1.0.115", features = ["derive"] }
+serde_json = "1.0.115"
