@@ -2,7 +2,6 @@ pub mod load {
     use core::fmt;
     use std::fs::File;
     use std::io::Read;
-
     use serde::Deserialize;
 
     #[derive(Deserialize)]
@@ -17,7 +16,13 @@ pub mod load {
     }
 
     pub fn load_config() -> Result<Config, String> {
-        let path = "config.json";
+        let mut path: String;
+        match home::home_dir() {
+            Some(home_path) => path = home_path.into_os_string().into_string()
+                .expect("Cannot determine home directory"),
+            None => return Err("Cannot detect home directory".to_string()),
+        }
+        path += "/.config/pst/config.json";
 
         let mut file = File::open(path).unwrap();
         let mut buff = String::new();
