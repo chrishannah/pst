@@ -18,23 +18,19 @@ pub struct PostError {
     error_description: String
 }
 
-pub async fn create_post(input: &str, draft: bool, token: &str) -> String {
+pub async fn create_post(input: &str, token: &str, post_status: &str) -> String {
     let timeout = Duration::new(5, 0);
     let client = ClientBuilder::new()
         .timeout(timeout)
         .build()
         .expect("cannot build client");
 
-    let mut post_status = "published";
-    if draft {
-        post_status = "draft";
-    }
-
     let params = [
         ("h", "entry"),
         ("content", &input),
         ("post-status", &post_status),
     ];
+    let is_draft = post_status == "draft";
 
     let response = client
         .post(MICRO_PUB_API)
@@ -57,8 +53,11 @@ pub async fn create_post(input: &str, draft: bool, token: &str) -> String {
     }
 
     let post: PostResponse = from_str(&text).expect("Failed to parse response");
-    let post_info = format!("Post published successfully.\nURL: {}\nPreview: {}\nEdit: {}", 
-                            post.url, post.preview, post.edit);
+
+    let mut action = "published";
+    if is_draft { action = "drafted"; }
+    let post_info = format!("Post {} successfully.\nURL: {}\nPreview: {}\nEdit: {}", 
+                            action, post.url, post.preview, post.edit);
 
     return post_info.to_string();
 }

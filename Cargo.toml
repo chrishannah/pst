@@ -1,6 +1,6 @@
 [package]
 name = "pst"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Chris Hannah <me@chrishannah.me>"]
 license = "MIT"
 description = "A tool to publish posts to Micro.blog"

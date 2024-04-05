@@ -10,7 +10,11 @@ pub use crate::micropub::api;
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let input = args().nth(1).expect("no input provided");
+    let post_type = args().nth(1).expect("no post type provided");
+    let input = args().nth(2).expect("no input provided");
+
+    let mut post_status = "draft";
+    if post_type == "post" { post_status = "published"; }
 
     let mut token = String::new();
     let config = load_config();
@@ -19,7 +23,7 @@ async fn main() -> Result<()> {
         Err(err) => println!("Error: {}", err),
     }
 
-    let post = api::create_post(&input, true, &token);
+    let post = api::create_post(&input, &token, &post_status);
     println!("{}", post.await);
 
     Ok(())

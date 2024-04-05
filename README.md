@@ -8,6 +8,26 @@ then that is a bonus.
 
 ## usage 
 
+Using pst is pretty simple.
+
+The command is `pst`, you then need to say if it's a draft or not, by using
+`draft` or `post`, and then you write your micro post.
+
+So to write a draft post, you would do something like this:
+
+```
+pst draft "Hello, world. This is a draft post"
+```
+
+Or to publish it directly:
+
+```
+pst post "only losers draft posts"
+```
+
+Keep in mind, that if you use anything other than `draft` or `post`, it will
+default to a draft post.
+
 ## configuration
 
 pst is configured using a rather simple json file, stored in your home
@@ -19,13 +39,3 @@ Micro.blog app token in the following format:
     "token": "micro.blog token"
 }
 ```
-
-## functionality
-
-- [x] publish drafts to Micro.blog
-- [x] configure app token in config.json
-- [x] better output when publishing post
-- [x] get config from file relative to home directory
-- [ ] usage instructions
-- [ ] control post status via argument
-- [ ] maybe support input from stdin
