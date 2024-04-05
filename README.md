@@ -6,6 +6,26 @@ This is partially a personal project to learn Rust, but also to build something
 that I will use myself. If other people find it useful in any capacity,
 then that is a bonus.
 
+## installation
+
+### cargo
+
+You can install pst directly from cargo. Just use the following command:
+
+```
+cargo install pst
+```
+
+### homebrew
+
+pst is available from homebrew, however you'll need to use a custom tap.
+Although it's still pretty easy:
+
+```
+brew tap chrishannah/pst
+brew install pst
+```
+
 ## usage 
 
 Using pst is pretty simple.
