@@ -1,10 +1,10 @@
 use std::env::args;
 
-use reqwest::Result;
 use crate::config::load::load_config;
+use reqwest::Result;
 
-mod micropub;
 mod config;
+mod micropub;
 
 pub use crate::micropub::api;
 
@@ -14,7 +14,9 @@ async fn main() -> Result<()> {
     let input = args().nth(2).expect("no input provided");
 
     let mut post_status = "draft";
-    if post_type == "post" { post_status = "published"; }
+    if post_type == "post" {
+        post_status = "published";
+    }
 
     let mut token = String::new();
     let config = load_config();
